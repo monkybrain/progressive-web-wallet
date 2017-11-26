@@ -1,0 +1,24 @@
+{
+  "name": "swish-wallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monkybrain/swish-wallet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monkybrain/swish-wallet/issues"
+  },
+  "homepage": "https://github.com/monkybrain/swish-wallet#readme",
+  "dependencies": {
+    "ethereum-qr-code": "^0.3.0",
+    "keythereum": "^1.0.2",
+    "web3": "^1.0.0-beta.26"
+  }
+}

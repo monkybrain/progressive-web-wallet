@@ -1,0 +1,75 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+</head>
+<style>
+
+  body {
+    background-image: url("img/zigzag.png");
+    background-repeat: repeat;
+    color: white;
+    font-family: "Courier New";
+  }
+
+
+
+  #content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /*border: 1px solid white;*/
+
+  }
+  #account {
+    float: left;
+    font-size: 12px;
+  }
+
+  #clipboard {
+
+  }
+
+  #balance {
+    margin-top: 40px;
+    font-size: 24px;
+  }
+
+  .button {
+    border: 1px solid white;
+    background: white;
+    color: black;
+    margin-top: 40px;
+    font-family: "Ubuntu";
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    width: 200px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .button a {
+    color: black;
+    text-decoration: none;
+  }
+
+
+</style>
+<body>
+  <div id="content">
+    <canvas id="qr"></canvas>
+    <div id="account"></div>
+    <!-- <div id="clipboard"><img data-clipboard-target="#account" src="img/clipboard.svg" width=18></div> -->
+    <div id="balance"><span id="balance_eth"></span> ETH <br>(<span id="balance_sek"></span> SEK)</div>
+
+    <div class="button" id="top_up"><a href="swish://">KÖP ETHER</a></div>
+    <div class="button" id="top_up"><a href="swish://">SKICKA ETHER</a></div>
+  </div>
+</body>
+<script src="index.js"></script>
+<script src="js/ticker.js"></script>
+</html>

@@ -47,7 +47,6 @@ var refresh = function() {
     .then((result) => result.json())
     .then(function(data) {
       let rate = data[0].price_sek
-      console.log(cache)
       document.getElementById("balance_sek").innerHTML = Math.round(cache.balance_eth * rate * 100) / 100
       }
     )

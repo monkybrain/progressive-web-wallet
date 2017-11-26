@@ -11,11 +11,21 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  width: 100%;
   /*border: 1px solid white;*/
 }
 
+#header {
+  position: absolute;
+  top: 40px;
+  font-family: "Ubuntu";
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  font-size: 36px;
+}
+
 #qr {
+  text-align: center;
   border-radius: 10px;
 }
 

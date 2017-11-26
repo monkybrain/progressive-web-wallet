@@ -5,13 +5,23 @@ body {
   font-family: "Courier New";
 }
 
-#content {
+.content {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  width: 100%;
+
   /*border: 1px solid white;*/
+}
+
+#content-main {
+  display: block;
+}
+
+#content-send {
+  display: none;
 }
 
 #header {
@@ -43,6 +53,54 @@ body {
 #balance {
   /*margin-top: 20px;*/
   font-size: 24px;
+}
+
+input {
+  font-family: "Courier New";
+  background: transparent;
+  color: white;
+  border: 1px solid grey;
+}
+
+input:focus {
+  outline: none;
+}
+
+.input-label {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#input-send-address {
+  width: 290px;
+}
+
+#input-send-amount {
+  font-size: 18px;
+  width: 100px;
+  text-align: center;
+}
+
+#spinner {
+  opacity: 0.5;
+  background: black;
+  color: black;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  border: 1px solid white;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  display: none;
+}
+
+#spinner-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .button {

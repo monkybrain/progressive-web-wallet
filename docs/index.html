@@ -1,6 +1,6 @@
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link href="css/style.css" type="text/css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
@@ -8,7 +8,7 @@
 
   <!-- <div id="header">WALLET DEMO</div> -->
 
-  <div id="content">
+  <div class="content" id="content-main">
 
     <!-- QR CODE -->
     <img id="qr">
@@ -26,10 +26,29 @@
     <div class="button" id="top_up"><a id="link_swish" href="swish://">KÖP ETHER</a></div>
 
     <!-- BUTTON: SEND -->
-    <div class="button" id="top_up"><a href="#" onclick="alert('Här kommer du snart kunna scanna QR-kod eller mata in adress och summa')">SKICKA ETHER</a></div>
+    <div class="button" id="top_up" onclick="setPage('send')">SKICKA ETHER</a></div>
 
   </div>
+
+  <div class="content" id="content-send">
+
+    <div class="input-label">Address</div>
+    <!-- <input type="text" id="input-send-address" placeholder="0x0" value="0x05D069EDc8CC1c559e4482Bec199c13547455208"></input> -->
+    <input type="text" id="input-send-address" placeholder="0x0"></input>
+
+    <div class="input-label">Belopp</div>
+    <input type="number" id="input-send-amount" placeholder="0" value="0.05"></input>
+
+    <div class="button" onclick="sendEther()">Skicka</div>
+
+    <div class="button" onclick="setPage('main')">Avbryt</div>
+
+  </div>
+
+  <div id="spinner"></div>
+
 </body>
 <script src="index.js"></script>
-<script src="js/util.js"></script>
+<!-- <script src="js/tx.js"></script> -->
+
 </html>

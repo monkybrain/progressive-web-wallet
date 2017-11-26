@@ -30,7 +30,7 @@ document.getElementById("address").innerHTML = cache.keys.address;
 document.getElementById("balance_eth").innerHTML = cache.balance;
 document.getElementById("balance_sek").innerHTML = cache.balance * 3800;
 
-document.getElementById("link_swish").href = encodeURI('swish://payment?data={"version":1,"payee":{"value":"070-978 27 38","editable":false},"amount":{"value":100,"editable":false},"message":{"value":"Fisk","editable":true}}')
+document.getElementById("link_swish").href = encodeURI('swish://payment?data={"version":1,"payee":{"value":"070-938 59 75","editable":false},"amount":{"value":100,"editable":false},"message":{"value":"Fisk","editable":true}}')
 
 },{"ethereum-qr-code":27,"keythereum":53}],2:[function(require,module,exports){
 /*! bignumber.js v4.1.0 https://github.com/MikeMcl/bignumber.js/LICENCE */

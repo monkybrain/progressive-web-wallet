@@ -1,0 +1,56 @@
+body {
+  background-image: url("../img/zigzag.png");
+  background-repeat: repeat;
+  color: white;
+  font-family: "Courier New";
+}
+
+#content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  /*border: 1px solid white;*/
+}
+
+#qr {
+  border-radius: 10px;
+}
+
+#clipboard {
+  position: relative;
+  top: -56px;
+  left: 134px;
+}
+
+#address {
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+#balance {
+  /*margin-top: 20px;*/
+  font-size: 24px;
+}
+
+.button {
+  border: 1px solid white;
+  background: white;
+  color: black;
+  margin-top: 40px;
+  font-family: "Ubuntu";
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  width: 200px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.button a {
+  color: black;
+  text-decoration: none;
+}

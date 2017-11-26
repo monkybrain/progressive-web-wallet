@@ -1,64 +1,9 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/style.css" type="text/css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
-<style>
-
-  body {
-    background-image: url("img/zigzag.png");
-    background-repeat: repeat;
-    color: white;
-    font-family: "Courier New";
-  }
-
-
-
-  #content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    /*border: 1px solid white;*/
-  }
-
-  #qr {
-    border-radius: 10px;
-  }
-
-  #address {
-    margin-top: 20px;
-    font-size: 12px;
-  }
-
-  #balance {
-    margin-top: 20px;
-    font-size: 24px;
-  }
-
-  .button {
-    border: 1px solid white;
-    background: white;
-    color: black;
-    margin-top: 40px;
-    font-family: "Ubuntu";
-    font-weight: bold;
-    padding: 5px;
-    border-radius: 5px;
-    width: 200px;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);
-  }
-
-  .button a {
-    color: black;
-    text-decoration: none;
-  }
-
-
-</style>
 <body>
   <div id="content">
 
@@ -68,8 +13,11 @@
     <!-- ADDRESS -->
     <div id="address"></div>
 
+    <!-- COPY TO CLIPBOARD -->
+    <div id="clipboard"><img src="img/clipboard.svg" width=20></div>
+
     <!-- BALANACE -->
-    <div id="balance"><span id="balance_eth"></span> ETH <br>(<span id="balance_sek"></span> SEK)</div>
+    <div id="balance"><span id="balance_eth">0</span> ETH <br>(<span id="balance_sek">0</span> SEK)</div>
 
     <!-- BUTTON: BUY -->
     <div class="button" id="top_up"><a id="link_swish" href="swish://">KÖP ETHER</a></div>
@@ -80,4 +28,5 @@
   </div>
 </body>
 <script src="index.js"></script>
+<script src="js/util.js"></script>
 </html>

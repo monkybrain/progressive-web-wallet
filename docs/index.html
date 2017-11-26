@@ -21,19 +21,19 @@
     transform: translate(-50%, -50%);
     text-align: center;
     /*border: 1px solid white;*/
-
   }
-  #account {
-    float: left;
+
+  #qr {
+    border-radius: 10px;
+  }
+
+  #address {
+    margin-top: 20px;
     font-size: 12px;
   }
 
-  #clipboard {
-
-  }
-
   #balance {
-    margin-top: 40px;
+    margin-top: 20px;
     font-size: 24px;
   }
 
@@ -61,15 +61,23 @@
 </style>
 <body>
   <div id="content">
-    <canvas id="qr"></canvas>
-    <div id="account"></div>
-    <!-- <div id="clipboard"><img data-clipboard-target="#account" src="img/clipboard.svg" width=18></div> -->
+
+    <!-- QR CODE -->
+    <img id="qr">
+
+    <!-- ADDRESS -->
+    <div id="address"></div>
+
+    <!-- BALANACE -->
     <div id="balance"><span id="balance_eth"></span> ETH <br>(<span id="balance_sek"></span> SEK)</div>
 
-    <div class="button" id="top_up"><a href="swish://">KÖP ETHER</a></div>
-    <div class="button" id="top_up"><a href="swish://">SKICKA ETHER</a></div>
+    <!-- BUTTON: BUY -->
+    <div class="button" id="top_up"><a id="link_swish" href="swish://">KÖP ETHER</a></div>
+
+    <!-- BUTTON: SEND -->
+    <div class="button" id="top_up"><a href="#" onclick="alert('Här kommer du snart kunna scanna QR-kod eller mata in address och summa')">SKICKA ETHER</a></div>
+
   </div>
 </body>
 <script src="index.js"></script>
-<script src="js/ticker.js"></script>
 </html>

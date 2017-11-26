@@ -25633,7 +25633,7 @@ module.exports = function (requested_total_memory) {
   return scrypt;
 };
 
-}).call(this,require('_process'),"/node_modules/keythereum/lib")
+}).call(this,require('_process'),"/../node_modules/keythereum/lib")
 },{"_process":224,"fs":103,"path":217}],55:[function(require,module,exports){
 (function (global){
 

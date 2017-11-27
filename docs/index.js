@@ -68,11 +68,11 @@ setInterval(refresh, 1000*15)
 
 window.setPage = function(page) {
   if (page === "send") {
-    document.getElementById("content-main").style.display = "none";
-    document.getElementById("content-send").style.display = "block";
+    document.getElementById("content-main").setAttribute("hidden", true)
+    document.getElementById("content-send").removeAttribute("hidden")
   } else if (page === "main") {
-    document.getElementById("content-main").style.display = "block";
-    document.getElementById("content-send").style.display = "none";
+    document.getElementById("content-main").removeAttribute("hidden")
+    document.getElementById("content-send").setAttribute("hidden", true)
     document.getElementById("input-send-address").value = "";
     document.getElementById("input-send-amount").value = "";
   }

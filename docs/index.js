@@ -11,7 +11,7 @@ cache = {
 // Setup Clipboard
 new Clipboard('#clipboard')
 
-if (localStorage.getItem("privateKey")) {
+if (localStorage.getItem("address")) {
   window.setPage("main")
 }
 

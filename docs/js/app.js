@@ -2,7 +2,7 @@ const keythereum = require('keythereum')
 const QR = require('ethereum-qr-code')
 const Web3 = require('web3')
 const Clipboard = require('clipboard')
-const EthereumTx = require('ethereumjs-tx')
+const interactions = require('./interactions.js')
 
 // Generate cache
 cache = {
@@ -27,6 +27,7 @@ if (!localStorage.getItem("keyObject")) {
 
 // Else get from localStorage
 } else {
+  window.setPage("main")
   console.log("Found key pair")
   cache.keyObject = JSON.parse(localStorage.getItem("keyObject"));
 }
@@ -44,6 +45,7 @@ var refresh = function() {
 
   // Update address
   document.getElementById("address").innerHTML = cache.address
+  document.getElementById("etherscan-address").href = "https://ropsten.etherscan.io/address/" + cache.address
   document.getElementById("clipboard").setAttribute('data-clipboard-text', cache.address)
 
   web3.eth.getBalance(cache.address)
@@ -63,62 +65,3 @@ var refresh = function() {
 // Refresh UI every 15 s
 refresh()
 setInterval(refresh, 1000*15)
-
-window.setPage = function(page) {
-  if (page === "send") {
-    document.getElementById("content-main").setAttribute("hidden", true)
-    document.getElementById("content-send").removeAttribute("hidden")
-  } else if (page === "main") {
-    document.getElementById("content-main").removeAttribute("hidden")
-    document.getElementById("content-send").setAttribute("hidden", true)
-    document.getElementById("input-send-address").value = "";
-    document.getElementById("input-send-amount").value = "";
-  }
-}
-
-window.sendEther = function() {
-  let address = document.getElementById("input-send-address").value.toLowerCase()
-  let amount = web3.utils.toWei(document.getElementById("input-send-amount").value, 'ether')
-  let privateKey = Buffer.from(localStorage.getItem("privateKey"), 'hex')
-
-  // Handle nonce
-  var nonce = parseInt(localStorage.getItem("nonce") || "21")
-  localStorage.setItem("nonce", nonce + 1)
-  console.log(nonce)
-
-  // Estimate gas
-
-  web3.eth.getGasPrice()
-  .then((gasPrice) => {
-    const txParams = {
-      nonce: web3.utils.toHex(nonce),
-      to: address,
-      gasPrice: web3.utils.toHex(gasPrice),
-      gasLimit: web3.utils.toHex(290000),
-      value: web3.utils.toHex(amount),
-      chainId: 3
-    }
-    console.log(txParams)
-    const tx = new EthereumTx(txParams)
-    tx.sign(privateKey)
-    const txData = "0x" + tx.serialize().toString('hex')
-
-    var spinner = document.getElementById('spinner')
-    spinner.style.display = "block"
-    web3.eth.sendSignedTransaction(txData)
-    .then(function(result) {
-      console.log(result)
-      alert("Transaktionen är nu genomförd")
-      setPage("main")
-      spinner.style.display = "none";
-    })
-    .catch(function(err) {
-      console.log(err)
-      alert(err)
-      spinner.style.display = "none";
-    })
-
-  })
-  .catch(console.log)
-
-}

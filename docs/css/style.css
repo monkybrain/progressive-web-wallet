@@ -16,14 +16,6 @@ body {
   /*border: 1px solid white;*/
 }
 
-#content-main {
-
-}
-
-#content-send {
-
-}
-
 #header {
   position: absolute;
   top: 40px;
@@ -120,5 +112,10 @@ input:focus {
 
 .button a {
   color: black;
+  text-decoration: none;
+}
+
+a {
+  color: white;
   text-decoration: none;
 }

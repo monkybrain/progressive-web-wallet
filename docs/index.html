@@ -6,15 +6,24 @@
 </head>
 <body>
 
-  <!-- <div id="header">WALLET DEMO</div> -->
+  <div class="content" id="content-new-wallet">
 
-  <div class="content" id="content-main">
+    <div>Enter password to generate new wallet<br><br></div>
+
+    <!-- <div class="input-label"></div> -->
+    <!-- <input type="text" id="input-send-address" placeholder="0x0" value="0x05D069EDc8CC1c559e4482Bec199c13547455208"></input> -->
+    <input type="password" id="input-new-password"></input>
+
+  </div>
+
+  <!-- PAGE: MAIN  -->
+  <div class="content" id="content-main" hidden>
 
     <!-- QR CODE -->
     <img id="qr">
 
     <!-- ADDRESS -->
-    <div id="address"></div>
+    <a id="etherscan-address" href="#"><div id="address"></div></a>
 
     <!-- COPY TO CLIPBOARD -->
     <div id="clipboard"><img src="img/clipboard.svg" width=20></div>
@@ -30,18 +39,29 @@
 
   </div>
 
+  <!-- PAGE: SEND  -->
   <div class="content" id="content-send" hidden>
 
-    <div class="input-label">Address</div>
+    <div class="input-label">Adress</div>
     <!-- <input type="text" id="input-send-address" placeholder="0x0" value="0x05D069EDc8CC1c559e4482Bec199c13547455208"></input> -->
     <input type="text" id="input-send-address" placeholder="0x0"></input>
 
     <div class="input-label">Belopp</div>
     <input type="number" id="input-send-amount" placeholder="0" value="0.05"></input>
 
-    <div class="button" onclick="sendEther()">Skicka</div>
+    <div class="button" onclick="sendEther('')">Skicka</div>
 
     <div class="button" onclick="setPage('main')">Avbryt</div>
+
+  </div>
+
+  <div class="content" id="content-tx" hidden>
+
+    <div>Transaktionen har skickats till nätverket för validering</div>
+
+    <a href="#" id="etherscan-tx" target="_blank"><div class="button">Följ transaktionen</div></a>
+
+    <div class="button" onclick="setPage('main')">Återvänd till din wallet</div>
 
   </div>
 
@@ -49,6 +69,4 @@
 
 </body>
 <script src="index.js"></script>
-<!-- <script src="js/tx.js"></script> -->
-
 </html>

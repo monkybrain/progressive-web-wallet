@@ -3,6 +3,7 @@ body {
   background-repeat: repeat;
   color: white;
   font-family: "Courier New";
+  overflow-x: hidden;
 }
 
 .content {

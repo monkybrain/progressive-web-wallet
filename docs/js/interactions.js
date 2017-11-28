@@ -1,3 +1,6 @@
+const wallet = require('./wallet.js')
+const ui = require('./ui.js')
+
 window.setPage = function(page) {
 
   switch (page) {
@@ -7,6 +10,7 @@ window.setPage = function(page) {
       show(document.getElementById("content-main"))
       hide(document.getElementById("content-send"))
       hide(document.getElementById("content-tx"))
+      ui.refresh()
       break
 
     case "send":
@@ -26,6 +30,17 @@ window.setPage = function(page) {
     default:
 
   }
+}
+
+window.deleteWallet = function() {
+  localStorage.clear()
+  location.reload()
+}
+
+window.generateWallet = function() {
+  var pw = document.getElementById("input-new-password").value
+  wallet.generateWallet(pw)
+  setPage('main')
 }
 
 /* Privte functions */

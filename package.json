@@ -18,6 +18,7 @@
   "homepage": "https://github.com/monkybrain/swish-wallet#readme",
   "dependencies": {
     "clipboard": "^1.7.1",
+    "crypto-js": "^3.1.9-1",
     "ethereum-qr-code": "^0.3.0",
     "ethereumjs-tx": "^1.3.3",
     "keythereum": "^1.0.2",

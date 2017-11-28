@@ -2,6 +2,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link href="css/style.css" type="text/css" rel="stylesheet">
+  <link href="css/loader.css" type="text/css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
 <body>
@@ -10,8 +11,6 @@
 
     <div>Ange lösenord för att skapa en ny wallet<br><br></div>
 
-    <!-- <div class="input-label"></div> -->
-    <!-- <input type="text" id="input-send-address" placeholder="0x0" value="0x05D069EDc8CC1c559e4482Bec199c13547455208"></input> -->
     <input type="password" id="input-new-password"></input>
 
     <div class="button" onclick="generateWallet()">Skapa wallet</div>
@@ -70,7 +69,15 @@
 
   </div>
 
-  <div id="spinner"></div>
+  <div id="spinner" hidden>
+    <div id="spinner-animation">
+      <div class="cssload-loader">
+      <div class="cssload-inner cssload-one"></div>
+      <div class="cssload-inner cssload-two"></div>
+      <div class="cssload-inner cssload-three"></div>
+    </div>
+  </div>
+
 
 </body>
 <script src="index.js"></script>

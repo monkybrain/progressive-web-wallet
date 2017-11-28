@@ -81,18 +81,16 @@ input:focus {
   height: 100%;
   top: 50%;
   left: 50%;
-  border: 1px solid white;
   position: absolute;
   transform: translate(-50%, -50%);
   z-index: 50;
-  display: none;
 }
 
-#spinner-icon {
+#spinner-animation {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -250px);
 }
 
 .button {

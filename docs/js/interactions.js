@@ -1,5 +1,6 @@
 const wallet = require('./wallet.js')
 const ui = require('./ui.js')
+const spinner = require('./spinner.js')
 
 window.setPage = function(page) {
 
@@ -10,6 +11,8 @@ window.setPage = function(page) {
       show(document.getElementById("content-main"))
       hide(document.getElementById("content-send"))
       hide(document.getElementById("content-tx"))
+      document.getElementById("input-send-address").value = ""
+      document.getElementById("input-send-amount").value = ""
       ui.refresh()
       break
 
@@ -33,14 +36,22 @@ window.setPage = function(page) {
 }
 
 window.deleteWallet = function() {
-  localStorage.clear()
-  location.reload()
+  if (confirm('Är du säker på att du vill radera din wallet?')) {
+    localStorage.clear()
+    location.reload()
+  }
 }
 
 window.generateWallet = function() {
   var pw = document.getElementById("input-new-password").value
-  wallet.generateWallet(pw)
-  setPage('main')
+  spinner.start()
+  setTimeout(function() {
+    wallet.generateWallet(pw)
+    spinner.stop()
+    setPage('main')
+  }, 1000)
+
+
 }
 
 /* Privte functions */

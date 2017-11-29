@@ -10,6 +10,7 @@ module.exports.send = function(to, amount, privateKey) {
 
   // Get nonce
   let nonce = 0
+
   return web3.eth.getTransactionCount(address)
   .then((count) => {
     nonce = count
@@ -22,6 +23,7 @@ module.exports.send = function(to, amount, privateKey) {
   // Construct transaction
   .then((gasPrice) => {
 
+    // Log gas price
     console.log("Gas price: " + gasPrice)
 
     // Convert amount to wei

@@ -2,7 +2,7 @@
 
 PoC for an Ethereum web wallet that you can fund via Swedish payment app Swish.
 
-Uses [Infura](https://www.infura.io) to connect to the Ropsten test net.
+Uses [Infura](https://www.infura.io) to connect to the __Ropsten__ test net.
 
 Try it out [here](https://monkybrain.github.io/swish-wallet/)
 

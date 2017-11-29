@@ -1,5 +1,6 @@
 <html>
 <head>
+  <title>Swish Wallet</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link href="css/style.css" type="text/css" rel="stylesheet">
   <link href="css/loader.css" type="text/css" rel="stylesheet">
@@ -7,13 +8,15 @@
 </head>
 <body>
 
-  <div class="content" id="content-new-wallet">
+  <!-- PAGE: NEW WALLET -->
+  <div class="content" id="content-new-wallet" hidden>
 
-    <div>Ange lösenord för att skapa en ny wallet<br><br></div>
-
+    <!-- INPUT: PASSWORD -->
+    <div>Enter a password for your new wallet<br><br></div>
     <input type="password" id="input-new-password"></input>
 
-    <div class="button" onclick="generateWallet()">Skapa wallet</div>
+    <!-- BUTTON: GENERATE WALLET -->
+    <div class="button" onclick="generateWallet()">Generate wallet</div>
 
   </div>
 
@@ -33,42 +36,49 @@
     <div id="balance"><span id="balance_eth">0</span> ETH <br>(<span id="balance_sek">0</span> SEK)</div>
 
     <!-- BUTTON: BUY -->
-    <div class="button" id="button-swish"><a id="link_swish" href="swish://">KÖP ETHER</a></div>
+    <!-- <div class="button" id="button-swish" onclick="buyEther()"><a id="link_swish" href="swish://">BUY ETHER</a></div> -->
+    <a href="swish://" target="_blank"><div class="button" id="button-swish" onclick="buyEther()">BUY ETHER</div></a>
 
     <!-- BUTTON: SEND -->
-    <div class="button" id="button-send-ether" onclick="setPage('send')">SKICKA ETHER</a></div>
+    <a href="#"><div class="button" id="button-send-ether" onclick="setPage('send')">SEND ETHER</div></a>
 
     <!-- BUTTON: DELETE -->
-    <div class="button" id="button-delete" onclick="deleteWallet()">RADERA WALLET</a></div>
+    <a href="#"><div class="button" id="button-delete" onclick="deleteWallet()">DELETE WALLET</div></a>
 
   </div>
 
   <!-- PAGE: SEND  -->
   <div class="content" id="content-send" hidden>
 
-    <div class="input-label">Adress</div>
-    <!-- <input type="text" id="input-send-address" placeholder="0x0" value="0x05D069EDc8CC1c559e4482Bec199c13547455208"></input> -->
+    <!-- INPUT: ADDRESS -->
+    <div class="input-label">Address</div>
+
     <input type="text" id="input-send-address" placeholder="0x0"></input>
 
-    <div class="input-label">Belopp</div>
-    <input type="number" id="input-send-amount" placeholder="0" value="0.05"></input>
+    <!-- INPUT: AMOUNT -->
+    <div class="input-label">Amount</div>
+    <input type="number" id="input-send-amount" placeholder="0.2"></input>
 
-    <div class="button" onclick="sendEther('')">Skicka</div>
+    <!-- BUTTON: SEND -->
+    <div class="button" onclick="sendEther('')">SEND</div>
 
-    <div class="button" onclick="setPage('main')">Avbryt</div>
+    <!-- BUTTON: CANCEL -->
+    <div class="button" onclick="setPage('main')">CANCEL</div>
 
   </div>
 
+  <!-- PAGE: TRANSACTION -->
   <div class="content" id="content-tx" hidden>
 
-    <div>Transaktionen har skickats till nätverket för validering</div>
+    <div>Your transaction has been sent to the network for validation</div>
 
-    <a href="#" id="etherscan-tx" target="_blank"><div class="button">Följ transaktionen</div></a>
+    <a href="#" id="etherscan-tx" target="_blank"><div class="button">VIEW TRANSACTION</div></a>
 
-    <div class="button" onclick="setPage('main')">Återvänd till din wallet</div>
+    <div class="button" onclick="setPage('main')">RETURN TO WALLET</div>
 
   </div>
 
+  <!-- SPINNER -->
   <div id="spinner" hidden>
     <div id="spinner-animation">
       <div class="cssload-loader">
@@ -77,7 +87,6 @@
       <div class="cssload-inner cssload-three"></div>
     </div>
   </div>
-
 
 </body>
 <script src="index.js"></script>

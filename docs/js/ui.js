@@ -22,17 +22,24 @@ module.exports.refresh = function() {
   document.getElementById("etherscan-address").href = "https://ropsten.etherscan.io/address/" + address
   document.getElementById("clipboard").setAttribute('data-clipboard-text', address)
 
+  // Update balance (in eth and sek)
   web3.eth.getBalance(address)
-  .then((result) => {
-    cache.balance_eth = web3.utils.fromWei(result.toString(10))
-    document.getElementById("balance_eth").innerHTML = cache.balance_eth
+
+  .then((balance) => {
+
+    // Convert balance from wei to ether
+    let balance_eth = web3.utils.fromWei(balance.toString(10))
+
+    // Get eth/sek rate
     fetch('https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=SEK')
     .then((result) => result.json())
-    .then(function(data) {
-      let rate = data[0].price_sek
-      document.getElementById("balance_sek").innerHTML = Math.round(cache.balance_eth * rate * 100) / 100
-      }
-    )
+    .then((data) => data[0].price_sek)
+
+    // Update balance UI elements
+    .then((rate) => {
+      document.getElementById("balance_eth").innerHTML = balance_eth
+      document.getElementById("balance_sek").innerHTML = Math.round(balance_eth * rate * 100) / 100
+    })
   })
 }
 

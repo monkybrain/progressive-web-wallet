@@ -8,6 +8,6 @@ Features:
 * Generates a private key and an address and stores them in `localStorage`
 * Your private key is encrypted with a passphrase (AES-256)
 * Your address is displayed in hex and as a QR code
-* Refreshes balance every 15 seconds, displayed in ETH and SEK
-* Allows you to transfer funds to other accounts
-* Allows you to perform "mock funding" by opening the Swish app and simultaneously adding 1 ETH to your account through Metamask's Ropsten faucet.
+* Your balance is refreshed every 15 seconds and displayed in ETH and SEK
+* You can transfer funds to other accounts
+* You can perform "mock funding" by clicking "buy ether", which opens the Swish app while simultaneously adding 1 ETH to your account through Metamask's Ropsten faucet.

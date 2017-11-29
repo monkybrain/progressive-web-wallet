@@ -6,7 +6,7 @@ var web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/0
 
 module.exports.refresh = function() {
 
-  console.log("refreshing")
+  console.log("Refreshing UI")
 
   var address = localStorage.getItem("address")
 

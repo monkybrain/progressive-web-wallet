@@ -4,16 +4,16 @@ const EthereumTx = require('ethereumjs-tx')
 // Setup web3
 var web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/0pzfHdAhsqakqtBk8Hs6"))
 
-module.exports.send = function(address, amount, privateKey) {
+module.exports.send = function(to, amount, privateKey) {
 
-  // Convert amount to wei
-  amount = web3.utils.toWei(amount, 'ether')
+  let address = localStorage.getItem("address")
 
   // Get nonce
   let nonce = 0
-  web3.eth.getTransactionCount(address)
+  return web3.eth.getTransactionCount(address)
   .then((count) => {
-    nonce = count  
+    nonce = count
+    console.log("Nonce: " + nonce)
   })
 
   // Get gas price
@@ -22,9 +22,14 @@ module.exports.send = function(address, amount, privateKey) {
   // Construct transaction
   .then((gasPrice) => {
 
+    console.log("Gas price: " + gasPrice)
+
+    // Convert amount to wei
+    amount = web3.utils.toWei(amount, 'ether')
+
     const txParams = {
       nonce: web3.utils.toHex(nonce),
-      to: address,
+      to: to,
       gasPrice: web3.utils.toHex(gasPrice),
       gasLimit: web3.utils.toHex(290000),
       value: web3.utils.toHex(amount),
@@ -42,14 +47,13 @@ module.exports.send = function(address, amount, privateKey) {
     return "0x" + tx.serialize().toString('hex')
   })
 
-  // Send transaction
-  .then((txData) => {
+  // Send transaction and resolve promise chain with Tx Hash
+  .then(function(txData) {
 
-    console.log("Tx Data:" + txData)
-
-    web3.eth.sendSignedTransaction(txData, (err, txHash) => {
-      console.log("Hash:" + txHash)
-      console.log(err)
+    return new Promise((resolve, reject) => {
+      web3.eth.sendSignedTransaction(txData)
+      .on('transactionHash', (txHash) => resolve(txHash))
+      .on('error', (err) => reject(err))
     })
   })
 

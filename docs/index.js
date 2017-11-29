@@ -38,7 +38,10 @@ window.buyEther = function() {
   faucet.receive(address)
   .then((txHash) => console.log("Faucet Tx Hash: " + txHash))
 
-  alert("1 ETH has been requested from the Metamask Ropsten faucet")
+  setTimeout(() => {
+    alert("1 ETH has been requested from the Metamask Ropsten faucet")
+  }, 1000)
+
 }
 
 window.sendEther = function() {

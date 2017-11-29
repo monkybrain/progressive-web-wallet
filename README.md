@@ -23,3 +23,5 @@ Install browserify
 Bundle all javascript files by running the following command in the root folder
 
 `browserify js/*.js -o index.js`
+
+![](res/swish-wallet.png)

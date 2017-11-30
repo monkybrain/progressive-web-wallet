@@ -1,12 +1,33 @@
 <html>
+
+<!-- HEAD -->
 <head>
+
+  <!-- TITLE -->
   <title>Swish Wallet</title>
+
+  <!-- META TAGS -->
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <meta name="theme-color" content="#000000">
+
+  <!-- STYLESHEETS -->
   <link href="css/style.css" type="text/css" rel="stylesheet">
   <link href="css/loader.css" type="text/css" rel="stylesheet">
+
+  <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+  <!-- ANALYTICS -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110452092-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-110452092-1');
+  </script>
 </head>
+
+<!-- BODY -->
 <body>
 
   <!-- PAGE: NEW WALLET -->
@@ -61,13 +82,13 @@
     <input type="number" id="input-send-amount" placeholder="0.2"></input>
 
     <!-- BUTTON: SEND -->
-    <div class="button" onclick="sendEther()">SEND</div>
+    <a href="#"><div class="button" onclick="sendEther()">SEND</div></a>
 
     <!-- BUTTON: SCAN -->
-    <div class="button" onclick="launchScanner()">SCAN QR CODE</div>
+    <a href="#"><div class="button" onclick="launchScanner()">SCAN QR CODE</div></a>
 
     <!-- BUTTON: CANCEL -->
-    <div class="button" onclick="setPage('main')">CANCEL</div>
+    <a href="#"><div class="button" onclick="setPage('main')">CANCEL</div></a>
 
   </div>
 
@@ -80,7 +101,7 @@
     <a href="#" id="etherscan-tx" target="_blank" title="View transaction on etherscan"><div class="button">VIEW TRANSACTION</div></a>
 
     <!-- BUTTON: RETURN TO WALLET -->
-    <div class="button" onclick="setPage('main')">RETURN TO WALLET</div>
+    <a href="#"><div class="button" onclick="setPage('main')">RETURN TO WALLET</div></a>
 
   </div>
 
@@ -93,7 +114,7 @@
     <a href="#" id="etherscan-tx-funding" target="_blank" title="View transaction on etherscan"><div class="button">VIEW TRANSACTION</div></a>
 
     <!-- BUTTON: RETURN TO WALLET -->
-    <div class="button" onclick="setPage('main')">RETURN TO WALLET</div>
+    <a href="#"><div class="button" onclick="setPage('main')">RETURN TO WALLET</div></a>
 
   </div>
 
@@ -105,10 +126,10 @@
     </div>
 
     <!-- BUTTON: SWITCH CAMERA -->
-    <div class="button" onclick="switchCamera()">SWITCH CAMERA</div>
+    <a href="#"><div class="button" onclick="switchCamera()">SWITCH CAMERA</div></a>
 
     <!-- BUTTON: RETURN TO WALLET -->
-    <div class="button" onclick="stopScanner()">CANCEL</div>
+    <a href="#"><div class="button" onclick="stopScanner()">CANCEL</div></a>
 
   </div>
 

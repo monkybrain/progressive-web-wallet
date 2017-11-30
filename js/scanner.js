@@ -19,12 +19,14 @@ module.exports.scan = function() {
 
   return new Promise((resolve, reject) => {
 
+    // On scanned QR code -> resolve content
     scanner.addListener('scan', (content) => {
       console.log("QR content: " + content)
       scanner.stop()
       resolve(content)
     });
 
+    // If cameras found -> scan with selected camera 
     if (cameras.length > 0) {
       scanner.start(cameras[cameraIndex])
     } else {
@@ -42,6 +44,6 @@ module.exports.switchCamera = function() {
   cameraIndex++
   cameraIndex = cameraIndex == cameras.length ? 0 : cameraIndex
   console.log("Camera index: " + cameraIndex)
-  module.exports.stop()
+  scanner.stop()
   module.exports.scan()
 }

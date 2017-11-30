@@ -21,6 +21,7 @@ module.exports.scan = function() {
 
     scanner.addListener('scan', (content) => {
       console.log("QR content: " + content)
+      scanner.stop()
       resolve(content)
     });
 

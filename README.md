@@ -9,9 +9,9 @@ Try it out here: https://monkybrain.github.io/swish-wallet/
 ### Features
 * Generates private key/address stored in `localStorage`
 * Private key encryption (AES-256)
-* QR code for transfers to wallet
+* QR code for receiving ether
+* QR scanner for sending ether
 * Balance refreshed every 15 seconds and displayed in ETH and SEK
-* Send ether to other addresses
 * Perform "mock funding" by clicking "buy ether", which opens the Swish app (if you have it installed) while simultaneously requesting 1 ETH from [MetaMask's Ropsten faucet](https://faucet.metamask.io).
 
 ### Build instructions

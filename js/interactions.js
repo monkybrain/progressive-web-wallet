@@ -76,45 +76,13 @@ window.generateWallet = function() {
 
 window.setPage = function(page) {
 
-  switch (page) {
+  // Hide all content divs
+  elements = Array.from(document.getElementsByClassName("content"))
+  elements.map((el) => hide(el))
 
-    case "new-wallet":
-      show(document.getElementById("content-new-wallet"))
-      hide(document.getElementById("content-main"))
-      hide(document.getElementById("content-send"))
-      hide(document.getElementById("content-tx"))
-      document.getElementById("input-send-address").value = ""
-      document.getElementById("input-send-amount").value = ""
-      ui.refresh()
-      break
+  // Show selected div
+  show(document.getElementById("content-" + page))
 
-    case "main":
-      hide(document.getElementById("content-new-wallet"))
-      show(document.getElementById("content-main"))
-      hide(document.getElementById("content-send"))
-      hide(document.getElementById("content-tx"))
-      document.getElementById("input-send-address").value = ""
-      document.getElementById("input-send-amount").value = ""
-      ui.refresh()
-      break
-
-    case "send":
-      hide(document.getElementById("content-new-wallet"))
-      hide(document.getElementById("content-main"))
-      show(document.getElementById("content-send"))
-      hide(document.getElementById("content-tx"))
-      break
-
-    case "tx":
-      hide(document.getElementById("content-new-wallet"))
-      hide(document.getElementById("content-main"))
-      hide(document.getElementById("content-send"))
-      show(document.getElementById("content-tx"))
-      break
-
-    default:
-
-  }
 }
 
 /* Privte functions */

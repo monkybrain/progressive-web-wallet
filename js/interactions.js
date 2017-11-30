@@ -89,6 +89,10 @@ window.stopScanner = function() {
   window.setPage("send")
 }
 
+window.switchCamera = function() {
+  scanner.switchCamera()
+}
+
 window.setPage = function(page) {
 
   // Hide all content divs

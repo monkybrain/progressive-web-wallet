@@ -87,7 +87,12 @@
   <!-- PAGE: QR SCANNER -->
   <div class="content" id="content-scanner" hidden>
 
-    <video id="scanner"></video>
+    <div id="video-container">
+      <video id="video-scanner"></video>
+    </div>
+
+    <!-- BUTTON: SWITCH CAMERA -->
+    <div class="button" onclick="switchCamera()">SWITCH CAMERA</div>
 
     <!-- BUTTON: RETURN TO WALLET -->
     <div class="button" onclick="stopScanner()">CANCEL</div>

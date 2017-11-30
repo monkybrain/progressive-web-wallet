@@ -43,6 +43,15 @@ module.exports.refresh = function() {
   })
 }
 
+module.exports.updateSendForm = function(content) {
+
+  // Parse QR code
+  var txData = new QR().readStringToJSON(content)
+  document.getElementById("input-send-address").value = txData.to
+  document.getElementById("input-send-amount").value = txData.value
+  
+}
+
 // Refresh UI every 15 s
 module.exports.refresh()
 setInterval(module.exports.refresh, 1000*15)

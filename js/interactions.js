@@ -3,6 +3,7 @@ const ui = require('./ui.js')
 const spinner = require('./spinner.js')
 const tx = require('./tx.js')
 const faucet = require('./faucet.js')
+const scanner = require('./scanner.js')
 
 window.buyEther = function() {
 
@@ -74,6 +75,20 @@ window.generateWallet = function() {
   }, 500)
 }
 
+window.launchScanner = function() {
+  window.setPage("scanner")
+  scanner.scan(0)
+  .then((content) => {
+    ui.updateSendForm(content)
+    window.setPage("send")
+  })
+}
+
+window.stopScanner = function() {
+  scanner.stop()
+  window.setPage("send")
+}
+
 window.setPage = function(page) {
 
   // Hide all content divs
@@ -82,6 +97,10 @@ window.setPage = function(page) {
 
   // Show selected div
   show(document.getElementById("content-" + page))
+
+  if (page == "main") {
+    ui.refresh()
+  }
 
 }
 

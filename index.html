@@ -61,7 +61,10 @@
     <input type="number" id="input-send-amount" placeholder="0.2"></input>
 
     <!-- BUTTON: SEND -->
-    <div class="button" onclick="sendEther('')">SEND</div>
+    <div class="button" onclick="sendEther()">SEND</div>
+
+    <!-- BUTTON: SCAN -->
+    <div class="button" onclick="launchScanner()">SCAN QR CODE</div>
 
     <!-- BUTTON: CANCEL -->
     <div class="button" onclick="setPage('main')">CANCEL</div>
@@ -78,6 +81,16 @@
 
     <!-- BUTTON: RETURN TO WALLET -->
     <div class="button" onclick="setPage('main')">RETURN TO WALLET</div>
+
+  </div>
+
+  <!-- PAGE: QR SCANNER -->
+  <div class="content" id="content-scanner" hidden>
+
+    <video id="scanner"></video>
+
+    <!-- BUTTON: RETURN TO WALLET -->
+    <div class="button" onclick="stopScanner()">CANCEL</div>
 
   </div>
 

@@ -119,3 +119,8 @@ a {
   color: white;
   text-decoration: none;
 }
+
+#video-scanner {
+  width: 80%;
+  border: 1px solid white;
+}

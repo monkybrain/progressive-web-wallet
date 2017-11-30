@@ -12,11 +12,11 @@ window.buyEther = function() {
 
   // Request ether from the metamask ropsten faucet
   faucet.receive(address)
-  .then((txHash) => console.log("Faucet Tx Hash: " + txHash))
-
-  setTimeout(() => {
-    alert("1 ETH has been requested from the Metamask Ropsten faucet")
-  }, 1000)
+  .then((txHash) => {
+    console.log("Faucet Tx Hash: " + txHash)
+    document.getElementById("etherscan-tx-funding").href = "https://ropsten.etherscan.io/tx/" + txHash
+    setPage("funding")
+  })
 
 }
 

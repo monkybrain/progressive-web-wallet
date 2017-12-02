@@ -14,7 +14,7 @@ Add it to your home screen for the complete PWA experience.
 * QR code for receiving ether
 * QR scanner for sending ether
 * Balance refreshed every 15 seconds and displayed in ETH and the base currency of your choice
-* Get ether requesting 1 ETH from [MetaMask's Ropsten faucet](https://faucet.metamask.io).
+* Get ether by posting a request to [MetaMask's Ropsten faucet](https://faucet.metamask.io).
 
 ### Build instructions
 

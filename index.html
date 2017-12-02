@@ -4,7 +4,7 @@
 <head>
 
   <!-- TITLE -->
-  <title>Swish Wallet</title>
+  <title>Progressive Web Wallet</title>
 
   <!-- META TAGS -->
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -12,7 +12,7 @@
 
   <!-- MANIFEST -->
   <link rel="manifest" href="manifest.json">
-  
+
   <!-- STYLESHEETS -->
   <link href="css/style.css" type="text/css" rel="stylesheet">
   <link href="css/loader.css" type="text/css" rel="stylesheet">
@@ -52,7 +52,7 @@
     <img id="qr">
 
     <!-- ADDRESS -->
-    <a id="etherscan-address" href="#" target="_blank" title="View address on etherscan"><div id="address"></div></a>
+    <a id="etherscan-address" href="#" target="_blank"><div id="address"></div></a>
 
     <!-- COPY TO CLIPBOARD -->
     <a href="#" title="Copy address to clipboard"><div id="clipboard"><img src="img/clipboard.svg" width=20></div></a>
@@ -61,14 +61,13 @@
     <div id="balance"><span id="balance_eth">0</span> ETH <br>(<span id="balance_sek">0</span> SEK)</div>
 
     <!-- BUTTON: BUY -->
-    <!-- <div class="button" id="button-swish" onclick="buyEther()"><a id="link_swish" href="swish://">BUY ETHER</a></div> -->
-    <a href="swish://" target="_blank"><div class="button" id="button-swish" onclick="buyEther()">BUY ETHER</div></a>
+    <div class="button" id="button-swish" onclick="getEther()">GET ETHER</div>
 
     <!-- BUTTON: SEND -->
-    <a href="#"><div class="button" id="button-send-ether" onclick="setPage('send')">SEND ETHER</div></a>
+    <div class="button" id="button-send-ether" onclick="setPage('send')">SEND ETHER</div>
 
     <!-- BUTTON: DELETE -->
-    <a href="#"><div class="button" id="button-delete" onclick="deleteWallet()">DELETE WALLET</div></a>
+    <div class="button" id="button-delete" onclick="deleteWallet()">DELETE WALLET</div>
 
   </div>
 
@@ -85,13 +84,13 @@
     <input type="number" id="input-send-amount" placeholder="0.2"></input>
 
     <!-- BUTTON: SEND -->
-    <a href="#"><div class="button" onclick="sendEther()">SEND</div></a>
+    <div class="button" onclick="sendEther()">SEND</div>
 
     <!-- BUTTON: SCAN -->
-    <a href="#"><div class="button" onclick="launchScanner()">SCAN QR CODE</div></a>
+    <div class="button" onclick="launchScanner()">SCAN QR CODE</div>
 
     <!-- BUTTON: CANCEL -->
-    <a href="#"><div class="button" onclick="setPage('main')">CANCEL</div></a>
+    <div class="button" onclick="setPage('main')">CANCEL</div>
 
   </div>
 
@@ -101,10 +100,10 @@
     <div>Your transaction has been broadcast to the network</div>
 
     <!-- BUTTON: VIEW TRANSACTION -->
-    <a href="#" id="etherscan-tx" target="_blank" title="View transaction on etherscan"><div class="button">VIEW TRANSACTION</div></a>
+    <a href="#" id="etherscan-tx" target="_blank"><div class="button">VIEW TRANSACTION</div></a>
 
     <!-- BUTTON: RETURN TO WALLET -->
-    <a href="#"><div class="button" onclick="setPage('main')">RETURN TO WALLET</div></a>
+    <div class="button" onclick="setPage('main')">RETURN TO WALLET</div>
 
   </div>
 
@@ -114,10 +113,10 @@
     <div>1 ETH has been requested from MetaMask's Ropsten faucet</div>
 
     <!-- BUTTON: VIEW TRANSACTION -->
-    <a href="#" id="etherscan-tx-funding" target="_blank" title="View transaction on etherscan"><div class="button">VIEW TRANSACTION</div></a>
+    <a href="#" id="etherscan-tx-funding" target="_blank"><div class="button">VIEW TRANSACTION</div></a>
 
     <!-- BUTTON: RETURN TO WALLET -->
-    <a href="#"><div class="button" onclick="setPage('main')">RETURN TO WALLET</div></a>
+    <div class="button" onclick="setPage('main')">RETURN TO WALLET</div>
 
   </div>
 
@@ -129,10 +128,10 @@
     </div>
 
     <!-- BUTTON: SWITCH CAMERA -->
-    <a href="#"><div class="button" onclick="switchCamera()">SWITCH CAMERA</div></a>
+    <div class="button" onclick="switchCamera()">SWITCH CAMERA</div>
 
     <!-- BUTTON: RETURN TO WALLET -->
-    <a href="#"><div class="button" onclick="stopScanner()">CANCEL</div></a>
+    <div class="button" onclick="stopScanner()">CANCEL</div>
 
   </div>
 

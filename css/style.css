@@ -107,6 +107,7 @@ input:focus {
   left: 50%;
   transform: translate(-50%, 0);
   user-select: none;
+  cursor: pointer;
 }
 
 .button a {

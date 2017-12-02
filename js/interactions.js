@@ -5,7 +5,10 @@ const tx = require('./tx.js')
 const faucet = require('./faucet.js')
 const scanner = require('./scanner.js')
 
-window.buyEther = function() {
+window.getEther = function() {
+
+  // Go to funding page
+  setPage("funding")
 
   // Get address
   let address = localStorage.getItem("address")
@@ -15,7 +18,6 @@ window.buyEther = function() {
   .then((txHash) => {
     console.log("Faucet Tx Hash: " + txHash)
     document.getElementById("etherscan-tx-funding").href = "https://ropsten.etherscan.io/tx/" + txHash
-    setPage("funding")
   })
 
 }

@@ -48,6 +48,9 @@ window.sendEther = function() {
   // If correct password entered -> perform transaction
   if (privateKey) {
 
+    // Start spinner
+    spinner.start()
+
     // Get address and amount from input fields
     let to = document.getElementById("input-send-address").value
     let amount = document.getElementById("input-send-amount").value
@@ -65,8 +68,14 @@ window.sendEther = function() {
       // Set page
       setPage("tx")
 
+      // Stop spinner
+      spinner.stop()
+
     })
-    .catch((err) => alert(err))
+    .catch((err) => {
+      spinner.stop()
+      alert(err)
+    })
 
   // Else alert user of incorrect password
   } else {

@@ -8,13 +8,15 @@ Try it out here: https://monkybrain.github.io/progressive-web-wallet/
 
 Add it to your home screen for the complete PWA experience.
 
+Only tested with Chrome for Android and desktop.
+
 ### Features
 * Generates a private key and an address and stores them in `localStorage`
 * Private key encryption (AES-256)
 * QR code for receiving ether
 * QR scanner for sending ether
 * Balance refreshed every 15 seconds and displayed in ETH and the base currency of your choice
-* Get ether by posting a request to [MetaMask's Ropsten faucet](https://faucet.metamask.io).
+* Get ether from [MetaMask's Ropsten faucet](https://faucet.metamask.io).
 
 ### Build instructions
 

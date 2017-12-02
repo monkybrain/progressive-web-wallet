@@ -128,6 +128,7 @@ a {
   margin-top: 20px;
   background: white;
   color: black;
+  border-radius: 5px;
 }
 
 #video-scanner {

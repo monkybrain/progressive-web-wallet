@@ -72,9 +72,6 @@
     <!-- BUTTON: SETTINGS -->
     <div class="button" id="button-delete" onclick="setPage('settings')">SETTINGS</div>
 
-    <!-- BUTTON: DELETE -->
-    <!-- <div class="button" id="button-delete" onclick="deleteWallet()">DELETE WALLET</div> -->
-
   </div>
 
   <!-- PAGE: SEND  -->
@@ -82,12 +79,11 @@
 
     <!-- INPUT: ADDRESS -->
     <div class="input-label">Address</div>
-
     <input type="text" id="input-send-address" placeholder="0x0"></input>
 
     <!-- INPUT: AMOUNT -->
     <div class="input-label">Amount</div>
-    <input type="number" id="input-send-amount" placeholder="0.2"></input>
+    <input type="number" id="input-send-amount" placeholder="0.0" min="0.0" step="0.1"></input>
 
     <!-- BUTTON: SEND -->
     <div class="button" onclick="sendEther()">SEND</div>
@@ -129,6 +125,7 @@
   <!-- PAGE: QR SCANNER -->
   <div class="content" id="content-scanner" hidden>
 
+    <!-- VIDEO: QR SCANNER PREVIEW -->
     <div id="video-container">
       <video id="video-scanner"></video>
     </div>
@@ -144,7 +141,7 @@
   <!-- PAGE: SETTINGS -->
   <div class="content" id="content-settings" hidden>
 
-    <!-- BUTTON: SWITCH CAMERA -->
+    <!-- SELECTOR: BASE CURRENCY -->
     <div>
       Select base currency:
       <select id="select-base-currency" class="dropdown" onchange="selectBaseCurrency()">
@@ -159,8 +156,6 @@
 
     <!-- BUTTON: RETURN TO WALLET -->
     <div class="button" onclick="setPage('main')">RETURN</div>
-
-
 
   </div>
 

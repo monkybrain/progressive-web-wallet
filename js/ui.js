@@ -12,8 +12,9 @@ module.exports.refresh = function() {
 
   if (!localStorage.getItem("address")) return;
 
-  // Generate QR code
-  new QR().toDataUrl({to: address}).then(function(result) {
+  // Generate base64 encoded QR image and set it as source for HTML element
+  new QR().toDataUrl({to: address})
+  .then((result) => {
     document.getElementById("qr").src = result.dataURL
   })
 

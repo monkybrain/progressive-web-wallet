@@ -150,21 +150,22 @@ a {
   width: 256px;
   transform: translate(-50%, -50%);
   z-index: 100;
-  animation: fadeInOut 0.8s  infinite;
+  animation: fadeInOut 0.8s infinite;
 }
 
 @keyframes fadeInOut {
+
   0% {
     opacity: 0.8;
-
   }
 
   50% {
-    opacity: 0.2;
+    opacity: 0.4;
     transform: scale(0.5, 0.5) translate(-100%, -100%);
   }
 
   100% {
     opacity: 0.8;
   }
+
 }

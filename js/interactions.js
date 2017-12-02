@@ -9,8 +9,8 @@ const worker = webworkify(require('./worker.js'))
 
 window.getEther = function() {
 
-  // Go to funding page
-  setPage("funding")
+  // Start spinner
+  spinner.start()
 
   // Get address
   let address = localStorage.getItem("address")
@@ -18,8 +18,18 @@ window.getEther = function() {
   // Request ether from the metamask ropsten faucet
   faucet.receive(address)
   .then((txHash) => {
+
+    // Log TX hash to console
     console.log("Faucet Tx Hash: " + txHash)
+
+    // Update "view transaction" button link
     document.getElementById("etherscan-tx-funding").href = "https://ropsten.etherscan.io/tx/" + txHash
+
+    // Go to funding page
+    setPage("funding")
+
+    // Stop spinner
+    spinner.stop()
   })
 
 }

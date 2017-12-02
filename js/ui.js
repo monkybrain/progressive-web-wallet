@@ -39,7 +39,7 @@ module.exports.refresh = function() {
     // Update balance UI elements
     .then((rate) => {
       document.getElementById("balance-eth").innerHTML = balanceEth
-      document.getElementById("balance-base").innerHTML = Math.round(balanceEth * rate * 100) / 100
+      document.getElementById("balance-base").innerHTML = (balanceEth * rate * 100).toFixed(2)
       document.getElementById("base-currency").innerHTML = baseCurrency
     })
   })

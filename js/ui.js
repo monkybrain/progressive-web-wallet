@@ -39,7 +39,6 @@ module.exports.refresh = function() {
 
     // Update balance UI elements
     .then((rate) => {
-      console.log(rate)
       document.getElementById("balance-eth").innerHTML = balanceEth
       document.getElementById("balance-base").innerHTML = (balanceEth * rate).toFixed(2)
       document.getElementById("base-currency").innerHTML = baseCurrency

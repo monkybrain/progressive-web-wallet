@@ -110,6 +110,15 @@ window.setPage = function(page) {
 
 }
 
+window.selectBaseCurrency = function() {
+  let selector = document.getElementById('select-base-currency')
+  let index = selector.selectedIndex
+  let options = selector.options
+  let currency = options[index].value
+  localStorage.setItem("baseCurrency", currency)
+  ui.refresh()
+}
+
 /* Privte functions */
 var hide = function(el) {
   el.setAttribute("hidden", true)

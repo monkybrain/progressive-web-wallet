@@ -28,17 +28,19 @@ module.exports.refresh = function() {
   .then((balance) => {
 
     // Convert balance from wei to ether
-    let balance_eth = web3.utils.fromWei(balance.toString(10))
+    let balanceEth = web3.utils.fromWei(balance.toString(10))
 
     // Get eth/sek rate
-    fetch('https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=SEK')
+    let baseCurrency = localStorage.getItem("baseCurrency")
+    fetch("https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=" + baseCurrency)
     .then((result) => result.json())
-    .then((data) => data[0].price_sek)
+    .then((data) => data[0]["price_" + baseCurrency.toLowerCase()])
 
     // Update balance UI elements
     .then((rate) => {
-      document.getElementById("balance_eth").innerHTML = balance_eth
-      document.getElementById("balance_sek").innerHTML = Math.round(balance_eth * rate * 100) / 100
+      document.getElementById("balance-eth").innerHTML = balanceEth
+      document.getElementById("balance-base").innerHTML = Math.round(balanceEth * rate * 100) / 100
+      document.getElementById("base-currency").innerHTML = baseCurrency
     })
   })
 }
@@ -49,7 +51,7 @@ module.exports.updateSendForm = function(content) {
   var txData = new QR().readStringToJSON(content)
   document.getElementById("input-send-address").value = txData.to
   document.getElementById("input-send-amount").value = txData.value
-  
+
 }
 
 // Refresh UI every 15 s

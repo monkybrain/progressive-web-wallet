@@ -120,6 +120,16 @@ a {
   text-decoration: none;
 }
 
+.dropdown {
+  font-family: "Courier New";
+  font-size: 16px;
+  border: none;
+  outline: none;
+  margin-top: 20px;
+  background: white;
+  color: black;
+}
+
 #video-scanner {
   position: relative;
   top: 50%;
@@ -137,5 +147,4 @@ a {
   width: 250px;
   overflow: hidden;
   border-radius: 5px;
-
 }

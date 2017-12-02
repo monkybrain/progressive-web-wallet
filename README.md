@@ -1,18 +1,20 @@
-# Swish Wallet
+# Progressive Web Wallet
 
-PoC for an Ethereum web wallet that you can fund via Swedish payment app Swish.
+Ethereum wallet implemented as a Progressive Web App.
 
 Uses [Infura](https://www.infura.io) to connect to the __Ropsten__ test net.
 
-Try it out here: https://monkybrain.github.io/swish-wallet/
+Try it out here: https://monkybrain.github.io/progressive-web-wallet/
+
+Add it to your home screen for the complete PWA experience.
 
 ### Features
-* Generates private key/address stored in `localStorage`
+* Generates a private key and an address and stores them in `localStorage`
 * Private key encryption (AES-256)
 * QR code for receiving ether
 * QR scanner for sending ether
-* Balance refreshed every 15 seconds and displayed in ETH and SEK
-* Perform "mock funding" by clicking "buy ether", which opens the Swish app (if you have it installed) while simultaneously requesting 1 ETH from [MetaMask's Ropsten faucet](https://faucet.metamask.io).
+* Balance refreshed every 15 seconds and displayed in ETH and the base currency of your choice
+* Get ether requesting 1 ETH from [MetaMask's Ropsten faucet](https://faucet.metamask.io).
 
 ### Build instructions
 
@@ -24,4 +26,4 @@ Bundle all javascript files by running the following command in the root folder
 
 `browserify js/*.js -o index.js`
 
-![](res/swish-wallet.png)
+![](res/progressive_web_wallet.png)

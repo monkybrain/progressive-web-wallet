@@ -10,7 +10,7 @@ if (!localStorage.getItem("baseCurrency")) {
 }
 
 // If wallet exists -> go to "main" page
-if (localStorage.getItem("address")) {
+if (localStorage.getItem("address") && localStorage.getItem("encryptedKey")) {
   window.setPage("main")
 // Else -> navigate to page "new wallet" page
 } else {

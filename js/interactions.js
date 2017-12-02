@@ -4,6 +4,8 @@ const spinner = require('./spinner.js')
 const tx = require('./tx.js')
 const faucet = require('./faucet.js')
 const scanner = require('./scanner.js')
+const webworkify = require('webworkify')
+const worker = webworkify(require('./worker.js'))
 
 window.getEther = function() {
 
@@ -27,8 +29,11 @@ window.sendEther = function() {
   // Prompt user for password
   let password = prompt("Enter password")
 
+  // Fetch encrypted key from localStorage
+  let encryptedKey = localStorage.getItem("encryptedKey")
+
   // Decrypt private key
-  let privateKey = wallet.decryptPrivateKey(password)
+  let privateKey = wallet.decryptPrivateKey(encryptedKey, password)
 
   // If correct password entered -> perform transaction
   if (privateKey) {
@@ -68,13 +73,32 @@ window.deleteWallet = function() {
 }
 
 window.generateWallet = function() {
+
+  // Get password
   var password = document.getElementById("input-new-password").value
+
+  // Start spinner
   spinner.start()
-  setTimeout(function() {
-    wallet.generate(password)
-    spinner.stop()
+
+  // Add web worker event listener
+  worker.addEventListener('message', (e) => {
+
+    // Remove web worker event listener
+    worker.removeEventListener('message', this)
+
+    // Store encrypted private key and address in localStorage
+    localStorage.setItem("encryptedKey", e.data.encryptedKey)
+    localStorage.setItem("address", e.data.address)
+
+    // Go to "main" page
     setPage('main')
-  }, 500)
+
+    // Stop spinner
+    spinner.stop()
+  })
+
+  // Post password to address generating web worker
+  worker.postMessage({command: "generate", password: password})
 }
 
 window.launchScanner = function() {

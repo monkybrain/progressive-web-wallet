@@ -8,19 +8,20 @@ module.exports.generate = function(password) {
 
   // Encrypt and store private key
   let privateKey = dk.privateKey.toString('hex')
-  let encryptedKey = CryptoJS.AES.encrypt(privateKey, password)
-  localStorage.setItem('privateKey', encryptedKey)
+  let encryptedKey = CryptoJS.AES.encrypt(privateKey, password).toString()
 
-  // Generate and store address + key object
+  // Generate address
   let keyObject = keythereum.dump(password, dk.privateKey, dk.salt, dk.iv)
-  localStorage.setItem("address", "0x" + keyObject.address)
+  let address = "0x" + keyObject.address
+
+  return {
+    encryptedKey: encryptedKey,
+    address: address
+  }
 
 }
 
-module.exports.decryptPrivateKey = function(password) {
-
-  // Fetch encrypted key from localStorage
-  let encryptedKey = localStorage.getItem("privateKey")
+module.exports.decryptPrivateKey = function(encryptedKey, password) {
 
   // Decrypt private key and convert it from buffer to hex string
   return CryptoJS.AES.decrypt(encryptedKey, password).toString(CryptoJS.enc.Utf8)

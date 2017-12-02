@@ -1,10 +1,10 @@
-var keythereum = require('keythereum')
-var CryptoJS = require('crypto-js')
+const keythereum = require('keythereum')
+const CryptoJS = require('crypto-js')
 
 module.exports.generate = function(password) {
 
-  // Generate key
-  const dk = keythereum.create()
+  // Generate private key
+  let dk = keythereum.create()
 
   // Encrypt and store private key
   let privateKey = dk.privateKey.toString('hex')
@@ -12,17 +12,18 @@ module.exports.generate = function(password) {
   localStorage.setItem('privateKey', encryptedKey)
 
   // Generate and store address + key object
-  const keyObject = keythereum.dump(password, dk.privateKey, dk.salt, dk.iv)
+  let keyObject = keythereum.dump(password, dk.privateKey, dk.salt, dk.iv)
   localStorage.setItem("address", "0x" + keyObject.address)
 
 }
 
 module.exports.decryptPrivateKey = function(password) {
 
-  // Decrypt encrypted private key
+  // Fetch encrypted key from localStorage
   let encryptedKey = localStorage.getItem("privateKey")
-  let privateKey = CryptoJS.AES.decrypt(encryptedKey, password).toString(CryptoJS.enc.Utf8)
-  return privateKey;
+
+  // Decrypt private key and convert it from buffer to hex string
+  return CryptoJS.AES.decrypt(encryptedKey, password).toString(CryptoJS.enc.Utf8)
 
 }
 

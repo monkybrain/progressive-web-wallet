@@ -31,6 +31,10 @@ window.getEther = function() {
     // Stop spinner
     spinner.stop()
   })
+  .catch((err) => {
+    alert(err)
+    spinner.stop()
+  })
 
 }
 

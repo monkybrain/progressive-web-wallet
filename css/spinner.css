@@ -1,0 +1,43 @@
+#spinner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/zigzag.png");
+  background-repeat: repeat;
+  color: white;
+}
+
+#spinner-container {
+  position: relative;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 256px;
+}
+
+#spinner-image {
+  opacity: 0.9;
+  width: 100%;
+  animation: fadeInOut 1s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+
+  0% {
+    opacity: 0.9;
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(0.95, 0.95);
+  }
+
+  100% {
+    opacity: 0.9;
+  }
+
+}

@@ -6,6 +6,7 @@ var web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/0
 
 module.exports.send = function(to, amount, privateKey) {
 
+  // Get address from localStorage
   let address = localStorage.getItem("address")
 
   // Get nonce
@@ -17,7 +18,7 @@ module.exports.send = function(to, amount, privateKey) {
     console.log("Nonce: " + nonce)
   })
 
-  // Get gas price
+  // Get recommended gas price
   .then(() => web3.eth.getGasPrice())
 
   // Construct transaction

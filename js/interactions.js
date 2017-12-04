@@ -8,7 +8,8 @@ const clipboard = require('./clipboard.js')
 const webworkify = require('webworkify')
 const worker = webworkify(require('./worker.js'))
 
-// General
+/* GENERAL */
+
 window.init = function() {
 
   // If no base currency set -> set base currency
@@ -42,7 +43,8 @@ window.setPage = function(page) {
 
 }
 
-// Page: generate wallet
+/* GENERATE WALLET */
+
 window.generateWallet = function() {
 
   // Get password
@@ -72,7 +74,7 @@ window.generateWallet = function() {
   worker.postMessage({command: "generate", password: password})
 }
 
-// Page: get ether
+/* GET ETHER */
 window.getEther = function() {
 
   // Start spinner
@@ -104,7 +106,8 @@ window.getEther = function() {
 
 }
 
-// Page: send ether
+/* SEND ETHER */
+
 window.sendEther = function() {
 
   // Prompt user for password
@@ -162,7 +165,7 @@ window.clearSendInputs = function() {
 
 window.launchScanner = function() {
   window.setPage("scanner")
-  scanner.scan(0)
+  scanner.scan()
   .then((content) => {
     ui.updateSendForm(content)
     window.setPage("send")
@@ -178,7 +181,8 @@ window.switchCamera = function() {
   scanner.switchCamera()
 }
 
-// Page: settings
+/* SETTINGS */
+
 window.deleteWallet = function() {
   let confirmation = confirm("Are you sure you want to delete your wallet?")
   if (confirmation) {
@@ -214,7 +218,8 @@ window.hidePrivateKey = function() {
   document.getElementById('clipboard-private-key').setAttribute('data-clipboard-text', "")
 }
 
-/* Privte functions */
+/* PRIVATE FUNCTIONS */
+
 var hide = function(el) {
   el.setAttribute("hidden", true)
 }

@@ -8,6 +8,7 @@ const clipboard = require('./clipboard.js')
 const webworkify = require('webworkify')
 const worker = webworkify(require('./worker.js'))
 
+// General
 window.init = function() {
 
   // If no base currency set -> set base currency
@@ -26,7 +27,52 @@ window.init = function() {
   spinner.stop()
 }
 
+window.setPage = function(page) {
 
+  // Hide all content divs
+  elements = Array.from(document.getElementsByClassName("content"))
+  elements.map((el) => hide(el))
+
+  // Show selected div
+  show(document.getElementById("content-" + page))
+
+  if (page === "main") {
+    ui.refresh()
+  }
+
+}
+
+// Page: generate wallet
+window.generateWallet = function() {
+
+  // Get password
+  var password = document.getElementById("input-new-password").value
+
+  // Start spinner
+  spinner.start()
+
+  // Add web worker event listener
+  worker.addEventListener('message', (e) => {
+
+    // Remove web worker event listener
+    worker.removeEventListener('message', this)
+
+    // Store encrypted private key and address in localStorage
+    localStorage.setItem("encryptedKey", e.data.encryptedKey)
+    localStorage.setItem("address", e.data.address)
+
+    // Go to "main" page
+    setPage('main')
+
+    // Stop spinner
+    spinner.stop()
+  })
+
+  // Post password to address generating web worker
+  worker.postMessage({command: "generate", password: password})
+}
+
+// Page: get ether
 window.getEther = function() {
 
   // Start spinner
@@ -58,6 +104,7 @@ window.getEther = function() {
 
 }
 
+// Page: send ether
 window.sendEther = function() {
 
   // Prompt user for password
@@ -108,33 +155,9 @@ window.sendEther = function() {
 
 }
 
-window.generateWallet = function() {
-
-  // Get password
-  var password = document.getElementById("input-new-password").value
-
-  // Start spinner
-  spinner.start()
-
-  // Add web worker event listener
-  worker.addEventListener('message', (e) => {
-
-    // Remove web worker event listener
-    worker.removeEventListener('message', this)
-
-    // Store encrypted private key and address in localStorage
-    localStorage.setItem("encryptedKey", e.data.encryptedKey)
-    localStorage.setItem("address", e.data.address)
-
-    // Go to "main" page
-    setPage('main')
-
-    // Stop spinner
-    spinner.stop()
-  })
-
-  // Post password to address generating web worker
-  worker.postMessage({command: "generate", password: password})
+window.clearSendInputs = function() {
+  clear(document.getElementById('input-send-address'))
+  clear(document.getElementById('input-send-amount'))
 }
 
 window.launchScanner = function() {
@@ -155,22 +178,7 @@ window.switchCamera = function() {
   scanner.switchCamera()
 }
 
-window.setPage = function(page) {
-
-  // Hide all content divs
-  elements = Array.from(document.getElementsByClassName("content"))
-  elements.map((el) => hide(el))
-
-  // Show selected div
-  show(document.getElementById("content-" + page))
-
-  if (page == "main") {
-    ui.refresh()
-  }
-
-}
-
-/* Settings */
+// Page: settings
 window.deleteWallet = function() {
   let confirmation = confirm("Are you sure you want to delete your wallet?")
   if (confirmation) {

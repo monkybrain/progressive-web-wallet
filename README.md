@@ -2,11 +2,13 @@
 
 Ethereum wallet implemented as a Progressive Web App.
 
+Single page application written in vanilla JavaScript (ES6), except for CommonJS modules.
+
 Uses [Infura](https://www.infura.io) to connect to the __Ropsten__ test net.
 
 Try it out here: https://monkybrain.github.io/progressive-web-wallet/
 
-Add it to your home screen for the complete PWA experience.
+Add it to your home screen for the complete PWA experience (only works with Chrome for Android).
 
 Only tested with Chrome for Android and desktop.
 

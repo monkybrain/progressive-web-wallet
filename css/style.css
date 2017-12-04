@@ -32,10 +32,26 @@ body {
   border-radius: 10px;
 }
 
-#clipboard {
+.clipboard {
+  cursor: pointer;
+}
+
+#clipboard-address {
   position: relative;
   top: -56px;
   left: 134px;
+}
+
+#clipboard-private-key {
+  margin-top: 20px;
+}
+
+#private-key {
+  position: relative;
+  word-wrap: break-word;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 310px;
 }
 
 #address {

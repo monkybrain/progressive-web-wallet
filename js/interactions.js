@@ -4,8 +4,28 @@ const spinner = require('./spinner.js')
 const tx = require('./tx.js')
 const faucet = require('./faucet.js')
 const scanner = require('./scanner.js')
+const clipboard = require('./clipboard.js')
 const webworkify = require('webworkify')
 const worker = webworkify(require('./worker.js'))
+
+window.init = function() {
+
+  // If no base currency set -> set base currency
+  if (!localStorage.getItem("baseCurrency")) {
+    localStorage.setItem("baseCurrency", "USD")
+  }
+
+  // If wallet already created -> go to "main" page
+  if (localStorage.getItem("address") && localStorage.getItem("encryptedKey")) {
+    window.setPage("main")
+  // Else -> go to "new wallet" page
+  } else {
+    window.setPage("new-wallet")
+  }
+
+  spinner.stop()
+}
+
 
 window.getEther = function() {
 
@@ -88,13 +108,6 @@ window.sendEther = function() {
 
 }
 
-window.deleteWallet = function() {
-  if (confirm('Are you sure you want to delete your wallet?')) {
-    wallet.delete()
-    location.reload()
-  }
-}
-
 window.generateWallet = function() {
 
   // Get password
@@ -157,13 +170,40 @@ window.setPage = function(page) {
 
 }
 
+/* Settings */
+window.deleteWallet = function() {
+  let confirmation = confirm("Are you sure you want to delete your wallet?")
+  if (confirmation) {
+    wallet.delete()
+    setPage('new-wallet')
+  }
+}
+
 window.selectBaseCurrency = function() {
   let selector = document.getElementById('select-base-currency')
   let index = selector.selectedIndex
   let options = selector.options
   let currency = options[index].value
-  localStorage.setItem("baseCurrency", currency)
+  localStorage.setItem('baseCurrency', currency)
   ui.refresh()
+}
+
+window.revealPrivateKey = function() {
+  let password = prompt("Enter password")
+  let encryptedKey = localStorage.getItem('encryptedKey')
+  let privateKey = wallet.decryptPrivateKey(encryptedKey, password)
+  if (privateKey) {
+    document.getElementById('private-key').innerHTML = privateKey
+    document.getElementById('clipboard-private-key').setAttribute('data-clipboard-text', privateKey)
+    setPage('private-key')
+  } else {
+    alert("Invalid password")
+  }
+}
+
+window.hidePrivateKey = function() {
+  document.getElementById('private-key').innerHTML = ""
+  document.getElementById('clipboard-private-key').setAttribute('data-clipboard-text', "")
 }
 
 /* Privte functions */

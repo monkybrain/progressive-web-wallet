@@ -20,7 +20,7 @@
 }
 
 #spinner-image {
-  opacity: 0.9;
+  opacity: 1;
   width: 100%;
   animation: fadeInOut 1s ease-in-out infinite;
 }
@@ -28,16 +28,16 @@
 @keyframes fadeInOut {
 
   0% {
-    opacity: 0.9;
+    opacity: 1;
   }
 
   50% {
-    opacity: 0.6;
+    opacity: 0.5;
     transform: scale(0.95, 0.95);
   }
 
   100% {
-    opacity: 0.9;
+    opacity: 1;
   }
 
 }

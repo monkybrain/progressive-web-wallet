@@ -21,7 +21,7 @@ module.exports.refresh = function() {
   // Update address
   document.getElementById("address").innerHTML = address
   document.getElementById("etherscan-address").href = "https://ropsten.etherscan.io/address/" + address
-  document.getElementById("clipboard").setAttribute('data-clipboard-text', address)
+  document.getElementById("clipboard-address").setAttribute('data-clipboard-text', address)
 
   // Update balance (in eth and sek)
   web3.eth.getBalance(address)

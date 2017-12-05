@@ -5,6 +5,7 @@ const tx = require('./tx.js')
 const faucet = require('./faucet.js')
 const scanner = require('./scanner.js')
 const clipboard = require('./clipboard.js')
+const analytics = require('./analytics.js')
 const webworkify = require('webworkify')
 const worker = webworkify(require('./worker.js'))
 
@@ -25,7 +26,11 @@ window.init = function() {
     window.setPage("new-wallet")
   }
 
+  // Stop spinner
   spinner.stop()
+
+  // Send analytics
+  analytics.sendEvent('app', 'launch')
 }
 
 window.setPage = function(page) {
@@ -68,6 +73,9 @@ window.generateWallet = function() {
 
     // Stop spinner
     spinner.stop()
+
+    // Send analytics event
+    analytics.sendEvent('wallet', 'generate')
   })
 
   // Post password to address generating web worker
@@ -98,6 +106,9 @@ window.getEther = function() {
 
     // Stop spinner
     spinner.stop()
+
+    // Send analytics event
+    analytics.sendEvent('wallet', 'faucet')
   })
   .catch((err) => {
     alert(err)
@@ -145,6 +156,9 @@ window.sendEther = function() {
       // Stop spinner
       spinner.stop()
 
+      // Send analytics event
+      analytics.sendEvent('wallet', 'tx')
+
     })
     .catch((err) => {
       spinner.stop()
@@ -188,6 +202,9 @@ window.deleteWallet = function() {
   if (confirmation) {
     wallet.delete()
     setPage('new-wallet')
+
+    // Send analytics event
+    analytics.sendEvent('wallet', 'delete')
   }
 }
 

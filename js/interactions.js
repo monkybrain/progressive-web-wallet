@@ -109,6 +109,7 @@ window.getEther = function() {
 
     // Send analytics event
     analytics.sendEvent('wallet', 'faucet')
+    
   })
   .catch((err) => {
     alert(err)

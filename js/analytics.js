@@ -1,10 +1,7 @@
+const analytics = require('universal-ga')
+
+analytics.initialize('UA-110452092-1')
+
 module.exports.sendEvent = function(category, action) {
-    console.log("Firing analytics event")
-    console.log(window.ga)
-    window.ga('send', {
-      hitType: 'event',
-      eventCategory: category,
-      eventAction: action,
-      nonInteraction: true
-    })
+  analytics.event(category, action)
 }

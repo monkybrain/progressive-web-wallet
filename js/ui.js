@@ -31,11 +31,11 @@ module.exports.refresh = function() {
     // Convert balance from wei to ether
     let balanceEth = web3.utils.fromWei(balance.toString(10))
 
-    // Get eth/sek rate
+    // Get eth/base currency rate
     let baseCurrency = localStorage.getItem("baseCurrency")
-    fetch("https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=" + baseCurrency)
-    .then((result) => result.json())
-    .then((data) => data[0]["price_" + baseCurrency.toLowerCase()])
+    fetch("https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=" + baseCurrency)
+    .then((response) => response.json())
+    .then((data) => data[baseCurrency])
 
     // Update balance UI elements
     .then((rate) => {
